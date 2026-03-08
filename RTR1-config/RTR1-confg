@@ -1,0 +1,160 @@
+
+!
+! Last configuration change at 12:02:25 UTC Mon Jan 26 2026
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname INFRA
+!
+boot-start-marker
+boot-end-marker
+!
+!
+security passwords min-length 6
+enable secret 4 XnNaTBPs7e6A0oYM3KkmL8UN8uSsq3Siy4cnDRcrpy2
+!
+no aaa new-model
+!
+ip cef
+!
+!
+!
+!
+!
+!
+ip dhcp snooping vlan 10,20,30,40,50-52,90-93
+ip dhcp snooping information option allow-untrusted
+no ip domain lookup
+ip domain name labo.bo
+no ipv6 cef
+multilink bundle-name authenticated
+!
+!
+!
+license udi pid CISCO1941/K9 sn FCZ174393SW
+!
+!
+username admin secret 4 XnNaTBPs7e6A0oYM3KkmL8UN8uSsq3Siy4cnDRcrpy2
+!
+!
+!
+!
+!
+!
+interface Embedded-Service-Engine0/0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet0/0
+ description gateway VLANS
+ no ip address
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/0.50
+ description GW VLAN 50
+ encapsulation dot1Q 50
+ ip address 10.1.50.1 255.255.255.0
+ ip helper-address 10.0.80.2
+ ip helper-address 10.0.81.2
+!
+interface GigabitEthernet0/0.51
+ description GW VLAN 51
+ encapsulation dot1Q 51
+ ip address 10.1.51.1 255.255.255.0
+ ip helper-address 10.0.80.2
+ ip helper-address 10.0.81.2
+!
+interface GigabitEthernet0/0.52
+ description GW VLAN 52
+ encapsulation dot1Q 52
+ ip address 10.1.52.1 255.255.255.0
+ ip helper-address 10.0.80.2
+ ip helper-address 10.0.81.2
+!
+interface GigabitEthernet0/0.71
+ description GW VLAN MGMT
+ encapsulation dot1Q 71
+ ip address 10.1.71.1 255.255.255.0
+!
+interface GigabitEthernet0/0.99
+ description nativeno
+ encapsulation dot1Q 99 native
+!
+interface GigabitEthernet0/1
+ description LINK NAAR PFSENSE2
+ ip address 10.0.255.18 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Serial0/0/0
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface Serial0/0/1
+ no ip address
+ shutdown
+ clock rate 2000000
+!
+interface FastEthernet0/1/0
+ no ip address
+!
+interface FastEthernet0/1/1
+ no ip address
+!
+interface FastEthernet0/1/2
+ no ip address
+!
+interface FastEthernet0/1/3
+ no ip address
+!
+interface Vlan1
+ no ip address
+!
+router ospf 1
+ network 10.0.255.16 0.0.0.3 area 0
+ network 10.1.50.0 0.0.0.255 area 0
+ network 10.1.51.0 0.0.0.255 area 0
+ network 10.1.52.0 0.0.0.255 area 0
+ network 10.1.71.0 0.0.0.255 area 0
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet0/1 10.0.255.17
+!
+!
+!
+!
+control-plane
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ password Vdab3001
+ login
+line aux 0
+line 2
+ no activation-character
+ no exec
+ transport preferred none
+ transport output pad telnet rlogin lapb-ta mop udptn v120 ssh
+ stopbits 1
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 0 0
+ login local
+ transport input ssh
+!
+scheduler allocate 20000 1000
+!
+end

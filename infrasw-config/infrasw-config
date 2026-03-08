@@ -1,0 +1,293 @@
+
+!
+! Last configuration change at 03:01:45 UTC Mon Mar 1 1993
+!
+version 15.0
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname INFRASW
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 5 $1$93mY$Sbgs46PGR225EEXVz3L9x0
+!
+username admin secret 5 $1$WFhK$ZPb23J7Kc5cq23dk0j1NY/
+no aaa new-model
+system mtu routing 1500
+!
+!
+ip dhcp snooping vlan 10-53,90-93
+no ip dhcp snooping information option
+ip dhcp snooping
+no ip domain-lookup
+ip domain-name labo.labo
+!
+!
+crypto pki trustpoint TP-self-signed-1924454784
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1924454784
+ revocation-check none
+ rsakeypair TP-self-signed-1924454784
+!
+!
+crypto pki certificate chain TP-self-signed-1924454784
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31393234 34353437 3834301E 170D3933 30333031 30303031 
+  30305A17 0D323030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 39323434 
+  35343738 3430819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  8100C338 987641C8 B2319B71 B8E2862E D2765640 23D8F278 25ED41B0 22493D48 
+  B7742460 F57E3F8A 7240FB46 1A1E8940 E79240C3 5710770E C08B6536 AC3EB101 
+  0A8480C0 CD7881A7 DCFE4FCF 063F799F A86F1BE8 281760CF 70F71CC0 9DA58206 
+  B5ADC0A1 4C2FF9A8 DD211BA7 216B8D80 FA8A4B1E 0C964575 51185B07 14B31DC9 
+  CBA70203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 14353061 633E37A6 5C2F4ECA 903C1625 9E4E3767 59301D06 
+  03551D0E 04160414 35306163 3E37A65C 2F4ECA90 3C16259E 4E376759 300D0609 
+  2A864886 F70D0101 05050003 8181003B 6778F3FF EB7439A2 CC99FD5E 7BF8CBE9 
+  C079EEB4 CDEC1242 66C9A2C7 D61D29A1 8712F53F D02D65C8 5645D0A8 2DDB6048 
+  99CFA43F C2DF8BFA F2156C30 825DB7ED 66219C96 7D274C52 F7C36EA5 E75FF671 
+  3F759653 5B46127A AA3AEDA9 2DDD247C 5D49813E 6AA6CA53 3F371E4D A6E707A4 
+  399156D2 A6072B64 4062BBE6 A053BB
+  	quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ switchport access vlan 52
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/2
+ switchport access vlan 50
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/3
+ switchport access vlan 51
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/4
+ switchport access vlan 71
+ switchport mode access
+ ip arp inspection limit rate 1000
+!
+interface FastEthernet0/5
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/6
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/7
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/8
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/9
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/10
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/11
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/12
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/13
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/14
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/15
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/16
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/17
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/18
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/19
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/20
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/21
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/22
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/23
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface FastEthernet0/24
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface GigabitEthernet0/1
+ description uplink route
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/2
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan71
+ ip address 10.1.71.2 255.255.255.0
+!
+ip default-gateway 10.1.71.1
+ip http server
+ip http secure-server
+!
+vstack
+!
+line con 0
+ exec-timeout 0 0
+ password Vdab3001
+ logging synchronous
+ login
+line vty 0 4
+ exec-timeout 0 0
+ login local
+ transport input ssh
+line vty 5 15
+ exec-timeout 0 0
+ login local
+ transport input ssh
+!
+end

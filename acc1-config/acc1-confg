@@ -1,0 +1,290 @@
+
+!
+! Last configuration change at 10:31:06 UTC Mon Jan 26 2026 by admin
+! NVRAM config last updated at 10:21:04 UTC Mon Jan 26 2026 by admin
+!
+version 15.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname ACC1
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 9 $9$osrC83k512nt1a$.elpx19BWhyjdXHj5negzesXyu/o7Bk1MkmJ9O9DP/s
+!
+username admin secret 9 $9$t5INYm8l/2qUUb$POgTzz7GygJ65cEon.MG7YOvCUwfq0hyyLcJ.QFFbjs
+no aaa new-model
+system mtu routing 1500
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip arp inspection vlan 10-53,90-93
+!
+!
+ip dhcp snooping vlan 10-53,90-93
+no ip dhcp snooping information option
+ip dhcp snooping
+no ip domain-lookup
+ip domain-name labo.com
+!
+crypto pki trustpoint TP-self-signed-1009157760
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1009157760
+ revocation-check none
+ rsakeypair TP-self-signed-1009157760
+!
+!
+crypto pki certificate chain TP-self-signed-1009157760
+ certificate self-signed 01
+  3082022B 30820194 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 31303039 31353737 3630301E 170D3933 30333031 30303031 
+  31305A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D31 30303931 
+  35373736 3030819F 300D0609 2A864886 F70D0101 01050003 818D0030 81890281 
+  81008B0F 7493E62E 6CFF110B 11381C08 47BC9F3F CDC1026A 2EB6E0D4 F2CD8096 
+  F8463BB1 23B83ADE 9020869C A5007F7F FBF8B11E A7C330C1 B767EFFC C4BC4275 
+  7E81F263 02723E28 A16E328A EE448E5C CBBFD2BB 31A3E9E0 84D2970D E407BC5B 
+  F5DF1D3D 0D22D328 A7C88AAE 69D9CC1A CE28E0F9 C3B6095B 4EDBFCF2 B4A93B47 
+  B2590203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 301F0603 
+  551D2304 18301680 144387ED ED61C32A 240CF7F1 B5FFABE2 87F244A4 78301D06 
+  03551D0E 04160414 4387EDED 61C32A24 0CF7F1B5 FFABE287 F244A478 300D0609 
+  2A864886 F70D0101 05050003 81810001 1AA961DB 2D8C0C07 B0CB5DFB 7BAA5DAE 
+  90987D5A 94F53614 F3485572 2F38E8FA DE4A71B4 054C8161 F01FC0AB F96EF367 
+  AA5997A1 C7A1E641 5DA19510 24B32A32 E3E3E68D 03CF8CDF E101B06E 9FA5E6EC 
+  3BFFA223 69754CCF 0033142B 4FB42DC0 400F5062 283B89B8 68D2AB4F B3293470 
+  1F863644 00BF0350 93B26AAB ADEB75
+  	quit
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+!
+!
+!
+!
+!
+interface Port-channel1
+ switchport trunk allowed vlan 10,20,30,40,41,50-52,60,70,80-82,90-93,99
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ ip dhcp snooping trust
+!
+interface FastEthernet0/1
+ switchport access vlan 999
+ switchport mode access
+!
+interface FastEthernet0/2
+ description naar deistri 2 trunk
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ ip dhcp snooping trust
+!
+interface FastEthernet0/3
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/4
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/5
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/6
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/7
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/8
+ switchport trunk allowed vlan 10,20,30,40,41,50-52,60,70,80-82,90-93,99
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface FastEthernet0/9
+ switchport trunk allowed vlan 10,20,30,40,41,50-52,60,70,80-82,90-93,99
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface FastEthernet0/10
+ switchport trunk allowed vlan 10,20,30,40,41,50-52,60,70,80-82,90-93,99
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface FastEthernet0/11
+ switchport trunk allowed vlan 10,20,30,40,41,50-52,60,70,80-82,90-93,99
+ switchport trunk native vlan 99
+ switchport mode trunk
+ switchport nonegotiate
+ ip arp inspection trust
+ channel-group 1 mode active
+ ip dhcp snooping trust
+!
+interface FastEthernet0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+!
+interface FastEthernet0/13
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+!
+interface FastEthernet0/14
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+!
+interface FastEthernet0/15
+ switchport access vlan 40
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security aging type inactivity
+ switchport port-security
+ ip arp inspection limit rate 1000
+!
+interface FastEthernet0/16
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/17
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/18
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/19
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/20
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/21
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ description shut for security
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/2
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface Vlan1
+ no ip address
+!
+interface Vlan70
+ description Management
+ ip address 10.0.70.4 255.255.255.0
+!
+ip default-gateway 10.0.70.1
+ip http server
+ip http secure-server
+!
+banner motd Ahmed mag niet stelen
+!
+line con 0
+ password 7 15240F0D06797B7479
+ login
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+ntp server 10.0.255.13
+end
