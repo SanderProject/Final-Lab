@@ -13,7 +13,7 @@ This repository contains the start-up configuration files of my final group lab 
 
 ## Notes
 
-### 🛠️ Geïmplementeerde Protocollen
+### Geïmplementeerde Protocollen
 
 Hieronder volgt een overzicht van de gebruikte technieken en protocollen, gecategoriseerd per netwerklaag:
 
