@@ -1,6 +1,6 @@
 # acc2-Sw
 
-This folder contains the acc2 Layer 2 switch Start-up config
+This folder contains the acc2 Access Layer 2 switch Start-up config
 
 ## Features
 
