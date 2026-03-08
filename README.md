@@ -39,7 +39,7 @@ Hieronder volgt een overzicht van de gebruikte technieken en protocollen, gecate
 
 ---
 
-### 🛡️ Firewall & Gateway
+### Firewall & Gateway
 De rand van het netwerk wordt beveiligd door een **pfSense** appliance:
 * **NAT:** Voor internettoegang van interne clients.
 * **Stateful Filtering:** Controle op inkomend en uitgaand verkeer via geavanceerde firewall-rules.
