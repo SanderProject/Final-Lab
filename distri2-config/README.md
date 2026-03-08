@@ -1,4 +1,4 @@
-# Distri-1 Sw
+# Distri-2 Sw
 
 This folder contains the Distri-2 Layer 3 switch Start-up config
 
