@@ -9,7 +9,7 @@ This repository contains the start-up configuration files of my final group lab 
 **[distr-configs](./distri1-config)** - contains start-up configuration file of the first distribution layer 3 switch  
 **[distr-configs](./distri2-config)** - contains start-up configuration file of the first distribution layer 3 switch  
 **[infra-configs](./RTR1-config)** - contains the RTR1 router Start-up config
-**[infra-configs](./infrasw-config)** - contains the infrasw Layer 2 switch Start-up config
+**[infra-configs](./infrasw-config)** - contains the infrasw Layer 2 switch Start-up config  
 
 ## Notes
 
