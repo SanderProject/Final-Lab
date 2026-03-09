@@ -9,7 +9,7 @@ This repository contains the start-up configuration files of my final group lab 
 **[distri1-configs](./distri1-config)** - contains start-up configuration file of the first distribution layer 3 switch  
 **[distri2-configs](./distri2-config)** - contains start-up configuration file of the second distribution layer 3 switch  
 **[infraRTR1-configs](./RTR1-config)** - contains start-up configuration file of the RTR1 router  
-**[infrasw-configs](./infrasw-config)** - contains start-up configuration file of the infrasw Layer 2 switch
+**[infrasw-configs](./infrasw-config)** - contains start-up configuration file of the infrasw Layer 2 switch  
 **[PFSense-backup](./PFSense-backup)** - contains the backup file including all the made configurations.
 
 ## Notes
