@@ -7,7 +7,6 @@ This folder contains the RTR1 router Start-up config
 Layer 2 (Data Link Layer) Protocols
 - IEEE 802.1Q (VLAN Tagging / Router-on-a-stick)
 - Native VLAN
-- DHCP Snooping
 - ARP Inspection
 - DHCP Snooping
 - Port Security
